@@ -23,3 +23,9 @@ userAccounts.sort{u1,u2 -> u1.dob.compareTo(u2.dob)}
 
 println("After Sorting.....")
 userAccounts.each {println(it.dob)}
+def testList=[]
+
+//groovy truth
+assert userAccounts.size() > 0:"User Accounts Not Null"
+
+assert userAccounts.get(0).firstName.length()>0:"First Name empty"

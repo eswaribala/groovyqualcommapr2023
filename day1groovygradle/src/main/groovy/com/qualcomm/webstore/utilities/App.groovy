@@ -16,4 +16,8 @@ def expiryDate= readln 'Enter Expiry Date'
 println "Expiry Date ${expiryDate}"
 
 //method 3
+def scanner =new Scanner(System.in)
 
+def cost=scanner.nextInt()
+scanner.nextLine()
+println "Cost= ${cost}"

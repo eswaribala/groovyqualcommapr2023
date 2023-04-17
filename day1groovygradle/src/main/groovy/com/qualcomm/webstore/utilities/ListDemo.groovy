@@ -6,8 +6,6 @@ import java.time.LocalDate
 
 def userAccounts=[]
 
-
-
 //range of users
 for(count in 1 .. 5){
     userAccounts.add(new UserAccount(new Random().nextInt(1000000),"Test@123",

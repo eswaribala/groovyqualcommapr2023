@@ -1,5 +1,5 @@
 package com.qualcomm.webstore.utilities
-/*
+
 println("Rocking with gradle!!!")
 //method 1
 println("Enter Product Id")
@@ -23,7 +23,7 @@ scanner.nextLine()
 println "Cost= ${cost}"
 
 println cost.class.name
-*/
+
 def description="""When an application has Groovy on the classpath 
 and uses standard Java serialization mechanisms to communicate between servers, 
 or to store local data, it is possible for an attacker to bake a special serialized object 
@@ -42,3 +42,4 @@ println "ProductId = ${productId}"
 
 def initChar='A'.minus(1)
 println " initChar ${initChar}"
+

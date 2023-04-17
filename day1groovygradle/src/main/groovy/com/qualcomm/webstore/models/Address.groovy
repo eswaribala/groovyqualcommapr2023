@@ -4,7 +4,7 @@ import groovy.transform.Canonical
 
 @Canonical class Address {
 
-    String addressId
+    Long addressId
     String doorNo
     String city
     String state

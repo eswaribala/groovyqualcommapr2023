@@ -39,3 +39,6 @@ println "${pattern}"
 
 def productId=new Random().nextInt(100).plus(1000)
 println "ProductId = ${productId}"
+
+def initChar='A'.minus(1)
+println " initChar ${initChar}"

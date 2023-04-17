@@ -8,34 +8,25 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
+sourceSets.main.java.srcDirs = ['src']
 dependencies {
     implementation 'org.apache.groovy:groovy:4.0.2'
-    // https://mvnrepository.com/artifact/org.apache.groovy/groovy
-    implementation group: 'org.apache.groovy', name: 'groovy', version: '4.0.2'
-
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-sourceSets {
-    main {
-        groovy {
-            srcDirs = ['src/groovy']
-        }
-    }
 }
 
 test {
     useJUnitPlatform()
 }
-
 jar {
-
     manifest {
+        attributes(
+                'Main-Class': 'com.qualcomm.webstore.utilities.Main'
+        )
 
-        attributes 'Main-Class': 'com.qualcomm.webstore.utilities.App'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
 }

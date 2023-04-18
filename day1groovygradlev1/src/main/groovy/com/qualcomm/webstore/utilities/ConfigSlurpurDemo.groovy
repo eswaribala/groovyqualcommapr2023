@@ -1,6 +1,6 @@
 package com.qualcomm.webstore.utilities
 
-def config = new ConfigSlurper().parse(new File("db.txt").toURL())
+def config = new ConfigSlurper().parse(new File("db.properties").toURL())
 
 def properties = config.toProperties()
 

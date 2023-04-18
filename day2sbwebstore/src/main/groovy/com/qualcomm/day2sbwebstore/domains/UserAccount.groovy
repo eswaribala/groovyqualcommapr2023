@@ -25,6 +25,6 @@ class UserAccount {
     String firstName
     @Column(name="First_Name",nullable = false,length = 50)
     String lastName
-  
+
 
 }

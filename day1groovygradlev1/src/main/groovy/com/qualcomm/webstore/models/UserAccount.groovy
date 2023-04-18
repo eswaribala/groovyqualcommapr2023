@@ -1,11 +1,13 @@
 package com.qualcomm.webstore.models
 
 import com.qualcomm.webstore.exceptions.NameException
+import com.qualcomm.webstore.facades.BankAccount
+import com.qualcomm.webstore.facades.GSTAccount
 import groovy.transform.Canonical
 
 import java.time.LocalDate
 
-@Canonical class UserAccount {
+@Canonical class UserAccount implements BankAccount, GSTAccount{
     Long userId
     String password
     LocalDate dob

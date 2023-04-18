@@ -1,0 +1,7 @@
+app.date = new Date()
+    app.age  = 42
+    app {
+        dbname="webstoredb"
+        port=8080
+        drivername="com.java.sql.jdbcDriver"
+    }

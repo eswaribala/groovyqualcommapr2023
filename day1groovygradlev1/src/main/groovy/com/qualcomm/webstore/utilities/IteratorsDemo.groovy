@@ -47,3 +47,10 @@ for(count in 1 .. 5){
 
 userAccounts.each {println "${it}"}
 userAccounts.eachWithIndex {it,index->println "${index},${it}"}
+
+Iterator itr= userAccounts.iterator()
+
+while(itr.hasNext()){
+
+    println(itr.next())
+}

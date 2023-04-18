@@ -1,14 +1,6 @@
 package com.qualcomm.webstore.utilities
 
-def config = new ConfigSlurper().parse('''
-    app.date = new Date()
-    app.age  = 42
-    app {
-        dbname="webstoredb"
-        port=8080
-        drivername="com.java.sql.jdbcDriver"
-    }
-''')
+def config = new ConfigSlurper().parse(new File("db.txt").toURL())
 
 def properties = config.toProperties()
 

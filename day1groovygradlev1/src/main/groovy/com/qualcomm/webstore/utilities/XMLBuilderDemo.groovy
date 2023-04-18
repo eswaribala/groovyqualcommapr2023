@@ -1,8 +1,8 @@
 package com.qualcomm.webstore.utilities
 
 
-
-def builder = new groovy.xml.MarkupBuilder()
+def writer = new StringWriter()
+def builder = new groovy.xml.MarkupBuilder(writer)
 //builder. Root element name
 builder.Employees {
     //description 'Project and Employees of 10..15'
@@ -21,4 +21,5 @@ builder.Employees {
     }
 }
 //check
-//new File('out.xml').write(builder as String)
+new File('employees.xml').write(writer as String)
+

@@ -1,0 +1,15 @@
+<feed>
+    <entry>
+        <content type="application/xml">
+            <properties>
+                <key>JobApplication/applicationId=94319</key>
+                <status>OK</status>
+                <editStatus>UPDATED</editStatus>
+                <message>Application has been updated successfully</message>
+                <index type="Edm.Int32">0</index>
+                <httpCode type="Edm.Int32">204</httpCode>
+                <inlineResults type="Bag(SFOData.UpsertResult)"></inlineResults>
+            </properties>
+        </content>
+    </entry>
+</feed>

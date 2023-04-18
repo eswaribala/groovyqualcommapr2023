@@ -23,7 +23,7 @@ class UserAccount {
     LocalDate dob
     @Column(name="First_Name",nullable = false,length = 50)
     String firstName
-    @Column(name="First_Name",nullable = false,length = 50)
+    @Column(name="Last_Name",nullable = false,length = 50)
     String lastName
 
 

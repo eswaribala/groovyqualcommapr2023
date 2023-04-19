@@ -23,12 +23,13 @@
 </div>
 <div>
   <h1><g:message code="Feedback Form"></g:message></h1>
-  <g:form >
-      <fieldset>
+  <g:form action="index">
+      <fieldset class="form">
        <g:render template="form"></g:render>
       </fieldset>
-      <fieldset>
-          <g:submitButton name="submit" value="submit" class="save"></g:submitButton>
+      <fieldset class="buttons">
+          <g:submitButton name="displayForm" value="Submit" class="save"></g:submitButton>
+          <input  type="button" name="displayForm" value="Reset" class="reset"></input>
       </fieldset>
   </g:form>
 </div>

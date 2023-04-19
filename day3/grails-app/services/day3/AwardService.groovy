@@ -1,0 +1,18 @@
+package day3
+
+import grails.gorm.services.Service
+
+@Service(Award)
+interface AwardService {
+
+    Award get(Serializable id)
+
+    List<Award> list(Map args)
+
+    Long count()
+
+    void delete(Serializable id)
+
+    Award save(Award award)
+
+}

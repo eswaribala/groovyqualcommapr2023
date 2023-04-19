@@ -2,5 +2,6 @@ package day3
 
 class ProductController {
 
-    def index() { }
+    static scaffold = Product
+   // def index() { }
 }

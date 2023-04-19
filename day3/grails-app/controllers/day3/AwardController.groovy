@@ -2,5 +2,6 @@ package day3
 
 class AwardController {
 
-    def index() { }
+    static scaffold = Award
+   // def index() { }
 }

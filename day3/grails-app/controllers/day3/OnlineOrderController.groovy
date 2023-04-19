@@ -2,5 +2,6 @@ package day3
 
 class OnlineOrderController {
 
-    def index() { }
+    static scaffold = OnlineOrder
+    //def index() { }
 }

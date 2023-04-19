@@ -16,7 +16,7 @@
 </div>
 <div class="fieldcontain">
     <label for="gender">Gender</label>
-    <g:radioGroup  name="gender" labels="['MALE','FEMALE','TRANS']" values="['M','F','T']" value="${gender}">
+    <g:radioGroup name="gender" labels="${day3.Gender.values()}" values="['M', 'F', 'T']" value="${gender}">
     ${it.label} ${it.radio}
     </g:radioGroup>
 </div>

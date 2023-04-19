@@ -5,7 +5,7 @@
   Time: 16:33
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="day3.Feedback" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -25,7 +25,7 @@
   <h1><g:message code="Feedback Form"></g:message></h1>
   <g:form action="index">
       <fieldset class="form">
-       <g:render template="form"></g:render>
+       <g:render template="form" model="[feedback:day3.Feedback]"></g:render>
       </fieldset>
       <fieldset class="buttons">
           <g:submitButton name="displayForm" value="Submit" class="save"></g:submitButton>

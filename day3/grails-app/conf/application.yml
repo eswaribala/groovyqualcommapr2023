@@ -103,7 +103,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:mysql://localhost:3306/qcomminvdb?useSSL=false
     test:
         dataSource:

@@ -5,6 +5,7 @@ class Product {
     Long productId
     String productName
     Integer cost
+    static hasMany = [orderItems:OrderItem]
 
     static constraints = {
     }

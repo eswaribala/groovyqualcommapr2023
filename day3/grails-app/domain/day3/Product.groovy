@@ -8,5 +8,9 @@ class Product {
     static hasMany = [orderItems:OrderItem]
 
     static constraints = {
+        productId()
+        productName()
+        cost()
+        
     }
 }

@@ -7,5 +7,7 @@ class OrderItem {
     static belongsTo = [onlineOrder:OnlineOrder, product:Product]
 
     static constraints = {
+        qty()
+        total()
     }
 }

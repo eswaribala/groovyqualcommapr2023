@@ -1,4 +1,6 @@
 package com.qualcomm.day2sbwebstore.domains
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import groovy.transform.Canonical
 import org.springframework.format.annotation.DateTimeFormat
 
@@ -11,6 +13,7 @@ import javax.persistence.Table
 import java.time.LocalDate
 @Entity
 @Table(name="UserAccount")
+@JsonIgnoreProperties(["metaClass"])
 class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

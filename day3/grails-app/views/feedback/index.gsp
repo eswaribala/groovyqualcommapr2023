@@ -23,9 +23,9 @@
 </div>
 <div>
   <h1><g:message code="Feedback Form"></g:message></h1>
-  <g:form action="index">
+  <g:form method="POST" action="index">
       <fieldset class="form">
-       <g:render template="form" model="[feedback:day3.Feedback]"></g:render>
+       <g:render template="form" model="[feedback: Feedback]"></g:render>
       </fieldset>
       <fieldset class="buttons">
           <g:submitButton name="displayForm" value="Submit" class="save"></g:submitButton>

@@ -11,6 +11,6 @@ class Product {
         productId()
         productName()
         cost()
-        
+
     }
 }

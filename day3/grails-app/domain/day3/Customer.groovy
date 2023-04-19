@@ -14,7 +14,10 @@ class Customer {
         lastName(size: 3..25,matches: "[a-zA-Z]{5,50}",nullable: false,blank: false)
         gender(nullable: false,blank: false)
         phone(matches: "\\d{10}")
-        email(nullable: false,email: email)
+        email(nullable: false,email: true)
         totalPoints(max: 100)
+    }
+    static mapping = {
+        tablePerHierarchy false
     }
 }

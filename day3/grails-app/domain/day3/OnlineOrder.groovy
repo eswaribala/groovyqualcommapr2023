@@ -1,7 +1,11 @@
 package day3
 
-class OnlineOrder {
+import org.springframework.format.annotation.DateTimeFormat
 
+import java.time.LocalDate
+
+class OnlineOrder {
+    //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     Date orderDate
     Long orderNo
     Integer orderTotal
@@ -15,6 +19,7 @@ class OnlineOrder {
             }
             return true
         })
+
 
         orderTotal()
     }

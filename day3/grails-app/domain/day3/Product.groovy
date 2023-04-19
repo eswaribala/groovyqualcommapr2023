@@ -17,11 +17,11 @@ class Product {
         this.cost = cost
     }*/
     static hasMany = [orderItems:OrderItem]
-    static mapping = {
-        version false
+    /*static mapping = {
+        //version false
       //  table 'product'
        // id column: 'productId', generator:'native', params:[sequence:'order_seq']
-    }
+    }*/
     static constraints = {
         productId()
         productName()

@@ -1,0 +1,289 @@
+def criteria = Person.createCriteria()
+def result = criteria.list{}
+This will return all Person instances with first name John
+
+#task 1
+def criteria = Person.createCriteria()
+def result = criteria.list{ 
+    eq ('firstName', 'John')
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.scroll{
+    eq ('lastName', 'Doe')
+}
+while (result.next()) {
+    def person = result.get()[0]
+    println "Hello ${person.firstName} ${person.lastName}"
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    or {
+        and {
+            eq('lastName', 'Doe')
+            gt('age', 15)
+        }
+        and {
+            eq('lastName', 'Smith')
+            gt('age', 18)
+        }
+    }
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list (max:10, offset:0) {
+    eq ('firstName', 'John')
+}
+
+
+def criteria = Person.createCriteria()
+def result = criteria.list (max:10, offset:0) {
+    eq ('firstName', 'John')
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    eq ('firstName', 'John')
+    firstResult(0)
+    maxResults(10)
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    eq ('firstName', 'John')
+    firstResult(10)
+    maxResults(10)
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    eq ('firstName', 'John')
+    order('lastName', 'asc')
+    firstResult(0)
+    maxResults(10)
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    projections {
+        property('firstName')
+        property('lastName')
+    }
+}
+
+def firstPerson = result[0]
+def firstName = firstPerson[0]
+def lastName = firstPerson[1]
+println "First Name = ${firstName}"
+println "Last Name = ${lastName}"
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    projections {
+        distinct('lastName')
+    }
+}
+println "Here are the list of unique last names"
+result.each { lastName ->
+    println "${lastName}"
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    projections {
+        avg('age')
+    }
+}
+println "The average age is ${result[0]}"
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    projections {
+        count()
+    }
+}
+println "The number of rows is ${result[0]}"
+
+def criteria = Purchase.createCriteria()
+def result = criteria.list {
+    projections {
+        sum('price')
+    }
+}
+println "The sum of all price ${result[0]}"
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    projections {
+        max('age')
+        min('age')
+    }
+}
+println "The maximum age is ${result[0][0]}"
+println "The minimum age is ${result[0][1]}"
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    eq('lastName', 'Doe')
+    ge('age', 13)
+    le('age', 17)
+}
+
+def criteria = Person.createCriteria()
+def result = criteria.list {
+    eqProperty('firstName', 'lastName')
+}
+
+def c = Account.createCriteria()
+def results = c.list {
+    like("holderFirstName", "Fred%")
+    and {
+        between("balance", 500, 1000)
+        eq("branch", "London")
+    }
+    maxResults(10)
+    order("holderLastName", "desc")
+}
+
+def c = Account.createCriteria()
+def results = c.list (max: 10, offset: 10) {
+    like("holderFirstName", "Fred%")
+    and {
+        between("balance", 500, 1000)
+        eq("branch", "London")
+    }
+    order("holderLastName", "desc")
+}
+
+ def criteria = Spot.createCriteria()
+            def result = criteria.list {
+                eq("slide.id", params.long("id"))
+                createAlias('layoutSpot', 'lSpot', CriteriaSpecification.LEFT_JOIN)
+                createAlias('lSpot.sample', 'smpl', CriteriaSpecification.LEFT_JOIN)
+                projections {
+                    property "id"
+                    property "signal"
+                    property "block"
+                    property "row"
+                    property "col"
+                    property "smpl.name"
+                    property "smpl.type"
+                    property "smpl.target"
+                }
+                order('block', 'asc')
+                order('row', 'desc')
+                order('col', 'asc')
+            }
+
+// Product.findAllByManufacturer(ACME)
+Product.where {
+    manufacturer == ACME
+}.list()
+ 
+// Product.findAllByManufacturerAndSalesPriceBetween(ACME, 200, 500)
+Product.where {
+    manufacturer == ACME && (salesPrice > 200 && salesPrice < 800)
+}.list()
+ 
+// Product.countByManufacturer(ACME)
+Product.where {
+    manufacturer == ACME
+}.count()
+
+Transaction.where {
+    quantity == 1 || 
+    (product == fluxCapacitor && 
+        (salesDate >= '1/1/2014' && salesDate <= '1/10/2014')
+    )
+}.list()
+
+Transaction.where {
+    product.manufacturer.name == 'ACME'
+}.list()
+equivalent to
+
+FROM transaction this_ 
+  INNER JOIN product product_al1_ ON this_.product_id = product_al1_.id
+  INNER JOIN company manufactur2_ ON product_al1_.manufacturer_id = manufactur2_.id
+WHERE manufactur2_.name = ?
+
+// find stores named after the city they're located in
+Store.where {
+    name == city
+}.list()
+ 
+// find the largest sales of the flux capacitor 
+Transaction.where {
+    quantity == max(quantity) && product == fluxCapacitor
+}.list()
+
+Transaction.createCriteria().list {
+    fetchMode 'product', FetchMode.JOIN
+    fetchMode 'store', FetchMode.JOIN
+ 
+    product {
+        manufacturer {
+            eq 'id', ACME.id
+        }
+    }
+}
+
+Transaction.createCriteria().list {
+    projections {
+        groupProperty 'product'
+        sum 'quantity'
+    }
+ 
+    product {
+        manufacturer {
+            eq 'id', ACME.id
+        }
+    }
+}
+
+Transaction.findAll('from Transaction as t where t.product.manufacturer.id = :companyId', [companyId: 1])
+
+String query = $/
+    select
+    s.name,
+    m.name,
+    p.name
+    from Transaction as t
+    inner join t.product as p
+    inner join t.store as s
+    inner join p.manufacturer as m
+    where t.product.manufacturer.id = :companyId
+    and t.salesDate between :startDate and :endDate
+/$
+ 
+List queryResults = Transaction.executeQuery(query,
+        [companyId: ACME.id, startDate: new Date('1/1/2014'), endDate: new Date('1/31/2014')]
+)
+
+String query = $/
+SELECT p.name,
+sum(t1.quantity),
+sum(t2.quantity)
+FROM transaction t1
+LEFT OUTER JOIN transaction t2 ON t1.product_id = t2.product_id
+INNER JOIN product p ON t1.product_id = p.id
+WHERE p.manufacturer_id = :companyId
+AND t1.sales_date between :startDate and :endDate
+AND t2.sales_date between :baselineStartDate and :baselineEndDate
+GROUP BY p.name
+/$
+ 
+new Transaction()
+.domainClass
+.grailsApplication
+.mainContext
+.sessionFactory
+.currentSession
+.createSQLQuery(query)
+        .setLong('companyId', 1)
+        .setDate('startDate', new Date('1/1/2014'))
+        .setDate('endDate', new Date('1/31/2014'))
+        .setDate('baselineStartDate', new Date('1/1/2013'))
+        .setDate('baselineEndDate', new Date('1/31/2013'))
+        .list()

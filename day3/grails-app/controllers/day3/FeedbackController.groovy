@@ -68,10 +68,10 @@ class FeedbackController {
         respond feedbackService.list(params), model:[feedbackCount: feedbackService.count()]
     }
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
-    def criteriaList(){
+    def femaleList(){
         def criteria = Feedback.createCriteria()
-        def result = criteria.list{
-            eq ('firstName', 'Vignesh')
+        List<Feedback> result = criteria.list{
+            eq ('gender', 'FEMALE')
 
         }
         [resultData: result]

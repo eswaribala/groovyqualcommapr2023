@@ -1,5 +1,6 @@
 package day3
 
+import grails.gorm.services.Service
 import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import org.springframework.scheduling.annotation.Scheduled
@@ -8,6 +9,7 @@ import java.text.SimpleDateFormat
 
 @Slf4j
 @CompileStatic
+@Service
 class InventoryJob {
 
 

@@ -8,11 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="layout" content="main"/>
     <title></title>
 </head>
 
 <body>
+<div class="nav" role="navigation">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="Feedback"/></a></li>
+    </ul>
 
+</div>
+<div>
 <table border="1">
     <tr>
         <td>
@@ -39,5 +46,6 @@
         </tr>
     </g:each>
 </table>
+</div>
 </body>
 </html>

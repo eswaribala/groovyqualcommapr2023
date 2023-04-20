@@ -2,36 +2,34 @@
   Created by IntelliJ IDEA.
   User: Balasubramaniam
   Date: 19/04/2023
-  Time: 16:33
+  Time: 19:30
 --%>
 
-<%@ page import="day3.Feedback" contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <g:set var="entityName" value="Feedback Form"></g:set>
-
-    <title>Feedback Form</title>
+    <meta name="layout" content="main" />
+    <g:set var="entityName" value="${message(code: 'feedback.label', default: 'Feedback')}" />
+    <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
-
 <body>
+<a href="#list-feedback" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
     </ul>
-
 </div>
-<div>
-  <h1><g:message code="Feedback Form"></g:message></h1>
-  <g:form method="POST" action="index">
-      <fieldset class="form">
-       <g:render template="form" model="[feedback: Feedback]"></g:render>
-      </fieldset>
-      <fieldset class="buttons">
-          <g:submitButton name="displayForm" value="Submit" class="save"></g:submitButton>
-          <input  type="button" name="displayForm" value="Reset" class="reset"></input>
-      </fieldset>
-  </g:form>
+<div id="list-customer" class="content scaffold-list" role="main">
+    <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <f:table collection="${feedbackList}" />
+
+    <div class="pagination">
+        <g:paginate total="${feedbackCount ?: 0}" />
+    </div>
 </div>
 </body>
 </html>

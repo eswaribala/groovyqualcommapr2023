@@ -1,3 +1,4 @@
+<%@ page import="day3.Feedback" %>
 <div class="fieldcontain">
     <label for="firstName">First Name</label>
     <g:textField name="firstName" value="${firstName}"> </g:textField>
@@ -16,8 +17,8 @@
 </div>
 <div class="fieldcontain">
     <label for="gender">Gender</label>
-    <g:radioGroup name="gender" labels="${day3.Gender.values()}" values="['M', 'F', 'T']" value="${gender}">
-    ${it.label} ${it.radio}
+    <g:radioGroup name="gender" labels="['MALE','FEMALE','TRANSGENDER']" values="['MALE','FEMALE','TRANSGENDER']"  value="${fieldValue(bean: feedback, field: "gender")}">
+       ${it.label} ${it.radio}
     </g:radioGroup>
 </div>
 <div class="fieldcontain">

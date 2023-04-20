@@ -1,5 +1,6 @@
 package day3
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
@@ -8,20 +9,20 @@ class ProductController {
     ProductService productService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond productService.list(params), model:[productCount: productService.count()]
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def show(Long id) {
         respond productService.get(id)
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
         respond new Product(params)
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save(Product product) {
         if (product == null) {
             notFound()
@@ -43,11 +44,11 @@ class ProductController {
             '*' { respond product, [status: CREATED] }
         }
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Long id) {
         respond productService.get(id)
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def update(Product product) {
         if (product == null) {
             notFound()
@@ -69,7 +70,7 @@ class ProductController {
             '*'{ respond product, [status: OK] }
         }
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def delete(Long id) {
         if (id == null) {
             notFound()

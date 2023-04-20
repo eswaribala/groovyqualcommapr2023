@@ -23,6 +23,8 @@ apply plugin:"com.bertramlabs.asset-pipeline"
 
 repositories {
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local" }
+    mavenCentral()
 }
 
 configurations {
@@ -33,6 +35,7 @@ configurations {
 }
 
 dependencies {
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.grails:grails-console"
@@ -74,6 +77,20 @@ dependencies {
     testRuntimeOnly "org.seleniumhq.selenium:selenium-chrome-driver:4.0.0"
     testRuntimeOnly "org.seleniumhq.selenium:selenium-firefox-driver:4.0.0"
     implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    //https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    // implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.11'
+// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.11'
+    // https://mvnrepository.com/artifact/org.grails.plugins/spring-security-core
+// https://mvnrepository.com/artifact/org.grails.plugins/spring-security-core
+    implementation group: 'org.grails.plugins', name: 'spring-security-core', version: '4.0.3'
+   // implementation group: 'org.grails',  name:'grails-datastore-rest-client', version:'5.0.0.RC2'
+    implementation group: 'io.micronaut', name:'micronaut-http-client'
 }
 
 bootRun {

@@ -1,5 +1,6 @@
 package day3
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
@@ -8,20 +9,20 @@ class AwardController {
     AwardService awardService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond awardService.list(params), model:[awardCount: awardService.count()]
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def show(Long id) {
         respond awardService.get(id)
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
         respond new Award(params)
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save(Award award) {
         if (award == null) {
             notFound()
@@ -43,11 +44,11 @@ class AwardController {
             '*' { respond award, [status: CREATED] }
         }
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Long id) {
         respond awardService.get(id)
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def update(Award award) {
         if (award == null) {
             notFound()
@@ -69,7 +70,7 @@ class AwardController {
             '*'{ respond award, [status: OK] }
         }
     }
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def delete(Long id) {
         if (id == null) {
             notFound()

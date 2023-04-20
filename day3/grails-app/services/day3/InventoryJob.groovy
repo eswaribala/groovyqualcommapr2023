@@ -16,12 +16,12 @@ class InventoryJob {
 
         static lazyInit = false
 
-        @Scheduled(fixedDelay = 10000L)
+        @Scheduled(initialDelayString = "PT15S")
         void executeEveryTen() {
             log.info "Simple Job every 10 seconds :{}", new SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(new Date())
         }
 
-        @Scheduled(fixedDelay = 45000L, initialDelay = 5000L)
+        @Scheduled(fixedDelay = 45L, initialDelay = 5L)
         void executeEveryFourtyFive() {
             log.info "Simple Job every 45 seconds :{}", new SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(new Date())
         }

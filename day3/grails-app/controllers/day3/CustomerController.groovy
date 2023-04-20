@@ -2,6 +2,8 @@ package day3
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
+import org.hibernate.Criteria
+
 import static org.springframework.http.HttpStatus.*
 
 class CustomerController {
@@ -96,5 +98,13 @@ class CustomerController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
+    def customRecord(){
+        //check in the break
+        def data = Customer.executeQuery(
+                'select c.firstName,a.points,o.orderNo from Customer c join c.awards as a join c.orders as o')
+        [data:data]
     }
 }

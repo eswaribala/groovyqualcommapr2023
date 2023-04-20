@@ -9,7 +9,12 @@ class Product {
     String productName
     Integer cost
 
-    /*Product(version, id, Long productId, String productName, Integer cost) {
+    Product(Long productId, String productName, Integer cost) {
+        this.productId = productId
+        this.productName = productName
+        this.cost = cost
+    }
+/*Product(version, id, Long productId, String productName, Integer cost) {
         this.version = version
         this.id = id
         this.productId = productId

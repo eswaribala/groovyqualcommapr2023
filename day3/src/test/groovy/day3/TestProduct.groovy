@@ -65,4 +65,12 @@ class TestProduct {
 
         );
     }
+
+   static def getProductList(){
+        def products=new ArrayList<Product>()
+        products.add(new Product(1L,"Mouse",400))
+        products.add(new Product(2L,"KeyBoard",660))
+        products.add(new Product(3L,"Pouch",567))
+       return products
+    }
 }

@@ -2,6 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="F:/groovyqualcomm/day3">
-        <classes/>
+        <classes>
+            <class name="day3.CanadaPhoneTest" />
+        </classes>
     </test>
 </suite>
